@@ -30,13 +30,6 @@ public class BoletimService {
                 System.out.println(b);
             }
         }
-    }
-    public Aluno getAlunoById(int id){
-        for(Aluno a : alunos){
-            if(a.getMatricula() == id){
-                return a;
-            }
-        }
-        return null;
 }
+
 
