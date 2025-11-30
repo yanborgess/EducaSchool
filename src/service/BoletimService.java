@@ -29,7 +29,7 @@ public class BoletimService {
             if (b.getAluno().equals(aluno)) {
                 System.out.println(b);
             }
-        }
+        }
+
+    }
 }
-
-
