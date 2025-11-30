@@ -1,11 +1,14 @@
 package model;
 
+import enums.TipoCurso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Aluno {
     private int matricula;
-    private String nome, curso;
+    private String nome;
+    private TipoCurso curso;
     private double media;
 
     private List<Disciplina> disciplinasMatriculadas = new ArrayList<>();
@@ -17,8 +20,8 @@ public class Aluno {
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
 
-    public String getCurso() { return curso; }
-    public void setCurso(String curso) { this.curso = curso; }
+    public TipoCurso getCurso() { return curso; }
+    public void setCurso(TipoCurso curso) { this.curso = curso; }
 
     public double getMedia() { return media; }
     public void setMedia(double media) { this.media = media; }
@@ -40,7 +43,8 @@ public class Aluno {
     @Override
     public String toString() {
         return "Nome: " + getNome() + " | Matrícula: " + getMatricula() +
-                " | Curso: " + getCurso() + " | Matérias: " + disciplinasMatriculadas.size();
+                " | Curso: " + (curso != null ? curso.getDescricao() : "N/A") +
+                " | Matérias: " + disciplinasMatriculadas.size();
     }
 
 

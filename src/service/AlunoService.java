@@ -1,26 +1,30 @@
 package service;
 
 import model.Aluno;
+import model.interfaces.ICrudService;
 
 import java.util.ArrayList;
 import java.util.List;
 
+public class AlunoService implements ICrudService<Aluno> {
 
-public class AlunoService {
-    private  static List<Aluno> alunos = new ArrayList<>();
+    private static List<Aluno> alunos = new ArrayList<>();
+    private static int contMatricula = 2025001;
 
-    private static  int contMatricula = 2025001;
-
-    public void cadastrarAluno(Aluno aluno) {
+    @Override
+    public void cadastrar(Aluno aluno) {
         aluno.setMatricula(contMatricula);
         contMatricula++;
         alunos.add(aluno);
     }
-    public List<Aluno> listarAluno() {
+
+    @Override
+    public List<Aluno> listar() {
         return alunos;
     }
 
-    public void deletarAluno(String nome) {
+    @Override
+    public void deletar(String nome) {
         for (int i = 0; i < alunos.size(); i++) {
             if (alunos.get(i).getNome().equalsIgnoreCase(nome)) {
                 alunos.remove(i);
@@ -31,7 +35,8 @@ public class AlunoService {
         System.out.println("Aluno não encontrado.");
     }
 
-    public Aluno buscarAluno(String nome) {
+    @Override
+    public Aluno buscar(String nome) {
         for (Aluno aluno : alunos) {
             if (aluno.getNome().trim().equalsIgnoreCase(nome.trim())) {
                 return aluno;
@@ -39,12 +44,13 @@ public class AlunoService {
         }
         return null;
     }
+
     public Aluno getAlunoById(int id) {
         for (Aluno a : alunos) {
             if (a.getMatricula() == id) {
                 return a;
             }
         }
-        return  null;
+        return null;
     }
 }

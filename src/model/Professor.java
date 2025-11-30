@@ -13,7 +13,6 @@ public class Professor extends Pessoa {
     }
     @Override
     public String toString() {
-        // Aproveitamos o getNome() e getArea() que vêm da classe Pessoa
         return "Nome: " + getNome() + " | Área: " + getArea() + " | Formação: " + getFormacao();
     }
 }
