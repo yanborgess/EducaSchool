@@ -7,9 +7,13 @@ import java.util.List;
 
 
 public class AlunoService {
-    private List<Aluno> alunos = new ArrayList<>();
+    private  static List<Aluno> alunos = new ArrayList<>();
+
+    private static  int contMatricula = 2025001;
 
     public void cadastrarAluno(Aluno aluno) {
+        aluno.setMatricula(contMatricula);
+        contMatricula++;
         alunos.add(aluno);
     }
     public List<Aluno> listarAluno() {
@@ -29,8 +33,16 @@ public class AlunoService {
 
     public Aluno buscarAluno(String nome) {
         for (Aluno aluno : alunos) {
-            if (aluno.getNome().equalsIgnoreCase(nome)) {
+            if (aluno.getNome().trim().equalsIgnoreCase(nome.trim())) {
                 return aluno;
+            }
+        }
+        return null;
+    }
+    public Aluno getAlunoById(int id){
+        for(Aluno a : alunos){
+            if(a.getId() == id){
+                return a;
             }
         }
         return null;
