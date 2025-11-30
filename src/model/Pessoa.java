@@ -27,4 +27,9 @@ public class Pessoa {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    @Override
+    public String toString() {
+        return "Nome: " + getNome() + " | CPF: " + getCpf();
+    }
 }

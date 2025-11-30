@@ -19,19 +19,42 @@ public class DisciplinaController {
     public void cadastrarDisciplina(Scanner sc){
         Disciplina d = new Disciplina();
         System.out.println("\n=== CADASTRO DE DISCIPLINA ===");
-        System.out.print("Digite o nome da disciplina: ");
-        d.setNomeDisciplina(sc.nextLine());
-        System.out.print("Digite a carga horaria: ");
-        d.setCargaHoraria(sc.nextInt());
-        sc.nextLine();
+
+
+        String nome = "";
+        while(nome.trim().isEmpty()){
+            System.out.print("Digite o nome da disciplina: ");
+            nome = sc.nextLine();
+        }
+        d.setNomeDisciplina(nome);
+
+
+        int carga = 0;
+        while (carga <= 0) {
+            System.out.print("Digite a carga horaria: ");
+            try {
+                carga = Integer.parseInt(sc.nextLine());
+                if (carga <= 0) System.out.println("A carga horária deve ser positiva.");
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, digite um número válido.");
+            }
+        }
+        d.setCargaHoraria(carga);
+
+
         System.out.println("Quem é o professor ministrante:");
-        String nomeProf = sc.nextLine();
+        String nomeProf = "";
+        while (nomeProf.trim().isEmpty()){
+            nomeProf = sc.nextLine().trim();
+        }
+
 
         Professor profEncontrado = professorService.buscarProfessor(nomeProf);
         if (profEncontrado != null){
             d.setProfessor(profEncontrado);
             disciplinaService.cadastraDisciplina(d);
             System.out.println("Disciplina cadastrada com sucesso! ID: " + d.getIdDisciplina());
+            System.out.println("Vinculado ao Prof : " + profEncontrado.getNome());
         } else {
             System.out.println("ERRO: Professor não encontrado! Cadastre um professor antes.");
         }

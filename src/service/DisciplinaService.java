@@ -1,13 +1,11 @@
 package service;
 
 import model.Disciplina;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DisciplinaService {
     private static List<Disciplina> disciplinas = new ArrayList<>();
-
     private static int contadorId = 1;
 
     public void cadastraDisciplina(Disciplina disciplina) {
@@ -30,4 +28,12 @@ public class DisciplinaService {
     }
 
 
+    public Disciplina buscarDisciplinaPorId(int id) {
+        for (Disciplina d : disciplinas) {
+            if (d.getIdDisciplina() == id) {
+                return d;
+            }
+        }
+        return null;
+    }
 }
