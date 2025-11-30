@@ -39,13 +39,12 @@ public class AlunoService {
         }
         return null;
     }
-    public Aluno getAlunoById(int id){
-        for(Aluno a : alunos){
-            if(a.getMatricula() == id){
+    public Aluno getAlunoById(int id) {
+        for (Aluno a : alunos) {
+            if (a.getMatricula() == id) {
                 return a;
             }
         }
-        return null;
+        return null;
+    }
 }
-
-
