@@ -1,40 +1,50 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Aluno {
-    private  String matricula;
+    private int matricula;
     private String nome, curso;
     private double media;
 
+    private List<Disciplina> disciplinasMatriculadas = new ArrayList<>();
+    private  List<Mensalidade> mensalidades = new ArrayList<>();
 
-    public String getMatricula() {
-        return matricula;
+    public int getMatricula() { return matricula; }
+    public void setMatricula(int matricula) { this.matricula = matricula; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getCurso() { return curso; }
+    public void setCurso(String curso) { this.curso = curso; }
+
+    public double getMedia() { return media; }
+    public void setMedia(double media) { this.media = media; }
+
+
+    public List<Disciplina> getDisciplinasMatriculadas() {
+        return disciplinasMatriculadas;
+    }
+    public void adicionarDisciplina(Disciplina disciplina) {
+        this.disciplinasMatriculadas.add(disciplina);
+    }
+    public List<Mensalidade> getMensalidades(){
+        return mensalidades;
+    }
+    public void adicionarMensalidade(Mensalidade mensalidade){
+        this.mensalidades.add(mensalidade);
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    @Override
+    public String toString() {
+        return "Nome: " + getNome() + " | Matrícula: " + getMatricula() +
+                " | Curso: " + getCurso() + " | Matérias: " + disciplinasMatriculadas.size();
     }
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    public double getMedia() {
-        return media;
-    }
-
-    public void setMedia(double media) {
-        this.media = media;
+    public int getId() {
+        return 0;
     }
 }
