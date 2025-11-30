@@ -17,7 +17,7 @@ public class FinanceiroController {
         System.out.println("\n=== GERAR MENSALIDADE ===");
         System.out.print("Digite o nome do aluno: ");
         String nome = sc.nextLine().trim();
-        Aluno aluno = alunoService.buscarAluno(nome);
+        Aluno aluno = alunoService.buscar(nome);
 
         if (aluno != null) {
             System.out.print("Descrição (ex: Mensalidade Jan/2025): ");
@@ -46,7 +46,7 @@ public class FinanceiroController {
         System.out.println("\n=== PAGAMENTO DE MENSALIDADE ===");
         System.out.print("Digite o nome do aluno: ");
         String nome = sc.nextLine();
-        Aluno aluno = alunoService.buscarAluno(nome);
+        Aluno aluno = alunoService.buscar(nome);
 
         if (aluno == null) {
             System.out.println("Aluno não encontrado.");
@@ -117,7 +117,7 @@ public class FinanceiroController {
         System.out.println("\n=== HISTÓRICO FINANCEIRO ===");
         System.out.print("Digite o nome do aluno: ");
         String nome = sc.nextLine();
-        Aluno aluno = alunoService.buscarAluno(nome);
+        Aluno aluno = alunoService.buscar(nome);
 
         if (aluno != null) {
             if (aluno.getMensalidades().isEmpty()) {
